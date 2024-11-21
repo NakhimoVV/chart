@@ -1,0 +1,19 @@
+{
+    "title": "OS Bombuntu",
+    "dev": {
+        "front": 13,
+        "back": 16,
+        "db": 6
+    },
+    "test": {
+        "front": 13,
+        "back": 16,
+        "db": 6
+    },
+    "prod": {
+        "front": 13,
+        "back": 15,
+        "db": 9
+    },
+    "norm": 10
+}

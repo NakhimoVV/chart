@@ -1,0 +1,47 @@
+@use '../styles/variables' as var;
+@use '../styles/mixins';
+
+.content {
+    // background-color: #794343;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding-inline: 5px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            font-size: 5px;
+        }
+    }
+    &__footer {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        gap: 47px;
+        p {
+            display: flex;
+            align-items: center;
+        }
+        span {
+            display: inline-flex;
+            margin-right: 9px;
+            @include mixins.fluid-text(14, 18);
+        }
+    }
+}
+
+p[id='front'] span {
+    color: var.$color-col-blue;
+}
+p[id='back'] span {
+    color: var.$color-col-purple;
+}
+p[id='db'] span {
+    color: var.$color-col-pink;
+}

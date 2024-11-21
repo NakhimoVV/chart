@@ -1,0 +1,19 @@
+{
+    "title": "OS Doors",
+    "dev": {
+        "front": 66,
+        "back": 100,
+        "db": 31
+    },
+    "test": {
+        "front": 60,
+        "back": 80,
+        "db": 31
+    },
+    "prod": {
+        "front": 66,
+        "back": 83,
+        "db": 31
+    },
+    "norm": 150
+}
