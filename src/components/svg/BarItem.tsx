@@ -73,29 +73,3 @@ const BarItem: FC<BarItemProps> = ({ nameComponent, data }) => {
 }
 
 export default BarItem
-
-// const barPath1 = `
-//         M10,0
-//         a10,10 0 0,0 -10,10
-//         v${barHeight1 - 10}
-//         h${barWidth}
-//         v-${barHeight1 - 10}
-//         a10,10 0 0,0 -10,-10
-//         Z
-//     `
-//     const barPath2 = `
-//         M0,${barHeight1}
-//         v${barHeight2}
-//         h${barWidth}
-//         v-${barHeight2}
-//         Z
-//     `
-//     const barPath3 = `
-//         M0,${barHeight1 + barHeight2}
-//         v${barHeight3 - 10}
-//         a10,10 0 0,0 10,10
-//         h${barWidth - 20}
-//         a10,10 0 0,0 10,-10
-//         v-${barHeight3 - 10}
-//         Z
-//     `
