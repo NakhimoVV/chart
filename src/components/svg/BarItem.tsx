@@ -62,7 +62,8 @@ const BarItem: FC<BarItemProps> = ({ nameComponent, data }) => {
                 y={textY}
                 fill="white"
                 textAnchor="middle"
-                fontSize="16"
+                fontSize="14"
+                fontWeight="700"
                 transform="scale(1, -1)"
             >
                 {text}
