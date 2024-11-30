@@ -1,0 +1,19 @@
+{
+    "title": "W$ POS",
+    "dev": {
+        "front": 0,
+        "back": 0,
+        "db": 0
+    },
+    "test": {
+        "front": 0,
+        "back": 0,
+        "db": 0
+    },
+    "prod": {
+        "front": 0,
+        "back": 0,
+        "db": 0
+    },
+    "norm": 0
+}

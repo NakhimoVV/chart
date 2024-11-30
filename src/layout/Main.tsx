@@ -1,6 +1,6 @@
 import Chart from '../components/Chart/Chart'
 import style from './Main.module.scss'
-import Button from '../components/Button/Button'
+import ButtonMenu from '../components/Button/ButtonMenu'
 
 import data from '../mockData/1.json'
 
@@ -9,7 +9,7 @@ const Main = () => {
         <main className={style.content + ' container'}>
             <div className={style.content__header}>
                 <h1>Количество пройденных тестов “{data.title}”</h1>
-                <Button iconType=" icon-dots" />
+                <ButtonMenu iconType=" icon-dots" />
             </div>
             <Chart data={data} />
             <div className={style.content__footer}>

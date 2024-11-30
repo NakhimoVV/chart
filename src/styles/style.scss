@@ -2,6 +2,7 @@
 @use './normalize';
 @use './variables' as var;
 @use './mixins';
+@use './utils';
 
 body {
     @include mixins.fluid-text(12, 16);

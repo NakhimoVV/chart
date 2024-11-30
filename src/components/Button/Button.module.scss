@@ -1,8 +1,41 @@
+@use '../../styles/variables' as var;
+@use '../../styles/media';
+
 .btn {
     display: inline-flex;
     background-color: transparent;
     align-items: center;
-    padding: 5px 5px;
+    padding: 10px 5px;
     border: none;
     color: currentColor;
+}
+.wrapp {
+    position: relative;
+}
+.menuList {
+    list-style: none;
+    position: absolute;
+    top: 25px;
+    right: 0;
+
+    border: 1px solid currentColor;
+    border-radius: var.$border-radius-small;
+
+    li:not(:last-child) {
+        border-bottom: 1px solid currentColor;
+    }
+    li {
+        white-space: nowrap;
+        padding-inline: 5px;
+        text-align: center;
+        @include media.hover {
+            background-color: var(--color-col-blue);
+            color: var.$color-light;
+            user-select: none;
+        }
+    }
+}
+.checked {
+    background-color: var(--color-col-blue);
+    color: var.$color-light;
 }
