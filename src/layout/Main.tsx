@@ -3,6 +3,7 @@ import style from './Main.module.scss'
 import ButtonMenu from '../components/Button/ButtonMenu'
 
 import data from '../mockData/1.json'
+import ChartBox from '../components/ChartBox/ChartBox'
 
 const Main = () => {
     return (
@@ -11,7 +12,8 @@ const Main = () => {
                 <h1>Количество пройденных тестов “{data.title}”</h1>
                 <ButtonMenu iconType=" icon-dots" />
             </div>
-            <Chart data={data} />
+            {/* <Chart data={data} /> */}
+            <ChartBox data={data} />
             <div className={style.content__footer}>
                 <p id="front">
                     <span className="icon-square"></span>Клиентская часть
