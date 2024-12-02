@@ -1,4 +1,4 @@
-@use '../styles/variables';
+@use '../styles/variables' as var;
 @use '../styles/mixins';
 
 .content {
@@ -37,11 +37,11 @@
 }
 
 p[id='front'] span {
-    color: var(--color-col-blue);
+    color: var.$color-col-blue;
 }
 p[id='back'] span {
-    color: var(--color-col-purple);
+    color: var.$color-col-purple;
 }
 p[id='db'] span {
-    color: var(--color-col-pink);
+    color: var.$color-col-pink;
 }

@@ -29,3 +29,12 @@ h1 {
     @include mixins.fluid-text(14, 24);
     font-weight: 500;
 }
+.front-color {
+    background-color: var.$color-col-blue;
+}
+.back-color {
+    background-color: var.$color-col-purple;
+}
+.db-color {
+    background-color: var.$color-col-pink;
+}

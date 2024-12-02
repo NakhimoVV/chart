@@ -29,13 +29,13 @@
         padding-inline: 5px;
         text-align: center;
         @include media.hover {
-            background-color: var(--color-col-blue);
+            background-color: var.$color-col-blue;
             color: var.$color-light;
             user-select: none;
         }
     }
 }
 .checked {
-    background-color: var(--color-col-blue);
+    background-color: var.$color-col-blue;
     color: var.$color-light;
 }
