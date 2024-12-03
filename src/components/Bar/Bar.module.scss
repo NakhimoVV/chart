@@ -9,10 +9,13 @@
     align-items: center;
     width: rem(80);
     height: 70svh;
-    margin-right: 60px;
     overflow: hidden;
     background-color: #4ab6e8;
     border-radius: var.$border-radius-large;
+
+    &:not(:last-child) {
+        margin-right: 60px;
+    }
     > p {
         align-self: center;
         background-color: var.$color-light;
@@ -21,8 +24,11 @@
         padding: rem(5);
         font-weight: 700;
     }
+
     @include mobile {
-        margin-right: 20px;
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
         width: rem(60);
     }
 }
