@@ -9,31 +9,12 @@
     color: var.$color-light;
 }
 
-.norm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: rem(80);
-    height: 70svh;
-    background-color: #4ab6e8;
-    border-radius: 10px;
-}
-
 .list {
     display: flex;
     align-items: flex-end;
-    li {
-        margin-right: 60px;
-        display: flex;
-        flex-direction: column-reverse;
-        overflow: hidden;
+
+    li:last-child {
+        background-color: var.$color-col-blue;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 20L20 0H13L0 13M20 20V13L13 20'/%3E%3C/g%3E%3C/svg%3E");
     }
-}
-.item {
-    border: 1px solid #000;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

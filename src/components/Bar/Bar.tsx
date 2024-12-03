@@ -11,7 +11,7 @@ interface BarProps {
 const Bar: FC<BarProps> = ({ data, index }) => {
     if (isNorm(data)) {
         return (
-            <li className={style.norm} style={{ height: data / index + 'svh' }}>
+            <li className={style.bar} style={{ height: data / index + 'svh' }}>
                 <p>{data}</p>
             </li>
         )
@@ -19,7 +19,7 @@ const Bar: FC<BarProps> = ({ data, index }) => {
     const { front, back, db } = data
     const sum = front + back + db
     return (
-        <li className={style.norm} style={{ height: sum / index + 'svh' }}>
+        <li className={style.bar} style={{ height: sum / index + 'svh' }}>
             <div
                 className={style.item + ' db-color'}
                 style={{ height: db / index + 'svh' }}
