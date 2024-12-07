@@ -13,42 +13,39 @@ export function createArrow(
     const toX = toRect.left + toRect.width / 2 - svgRect.left
     const toY = toRect.top - svgRect.top
 
-    // Промежуточная точка для изгиба (для X)
-    const bendX = (fromX + toX) / 2
-
-    // Очистка SVG перед добавлением новой стрелки
-    svgContainer.innerHTML = ''
+    // Промежуточная точка для изгиба
+    const bendX = fromX + (toX - fromX)
 
     const svgNS = 'http://www.w3.org/2000/svg'
 
-    // Создание polyline с двумя прямыми углами
+    // Создание polyline с прямым углом
     const polyline = document.createElementNS(svgNS, 'polyline')
     polyline.setAttribute(
         'points',
         `${fromX},${fromY} ${bendX},${fromY} ${toX},${toY}`
     )
     polyline.setAttribute('stroke', 'black')
-    polyline.setAttribute('stroke-width', '2')
+    polyline.setAttribute('stroke-width', '1')
     polyline.setAttribute('fill', 'none')
-    polyline.setAttribute('marker-end', 'url(#endMarker)') // маркер на конце
-    polyline.setAttribute('marker-mid', 'url(#midMarker)') // маркер в середине
+    polyline.setAttribute('marker-end', 'url(#endMarker)')
 
     // Создание маркера для конца
-    const endMarker = document.createElementNS(svgNS, 'marker')
-    endMarker.setAttribute('id', 'endMarker')
-    endMarker.setAttribute('markerWidth', '10')
-    endMarker.setAttribute('markerHeight', '10')
-    endMarker.setAttribute('viewBox', '-5 -5 10 10')
-    endMarker.setAttribute('orient', 'auto')
-    // Рисуем стрелку для endMarker
-    const arrow = document.createElementNS(svgNS, 'path')
-    arrow.setAttribute('d', 'M 0 0 L -5 -5 M 0 0 L -5 5 z')
-    arrow.setAttribute('stroke', 'black')
-    // Добавляем стрелку в маркер
-    endMarker.appendChild(arrow)
-
-    // Добавляем маркеры в SVG
-    svgContainer.appendChild(endMarker)
+    let defs = svgContainer.querySelector('defs')
+    if (!defs) {
+        defs = document.createElementNS(svgNS, 'defs')
+        const endMarker = document.createElementNS(svgNS, 'marker')
+        endMarker.setAttribute('id', 'endMarker')
+        endMarker.setAttribute('markerWidth', '10')
+        endMarker.setAttribute('markerHeight', '10')
+        endMarker.setAttribute('viewBox', '-5 -5 10 10')
+        endMarker.setAttribute('orient', 'auto')
+        const arrow = document.createElementNS(svgNS, 'path')
+        arrow.setAttribute('d', 'M 0 0 L -5 -5 M 0 0 L -5 5 z')
+        arrow.setAttribute('stroke', 'black')
+        endMarker.appendChild(arrow)
+        defs.appendChild(endMarker)
+        svgContainer.appendChild(defs)
+    }
 
     // Добавляем polyline в SVG
     svgContainer.appendChild(polyline)

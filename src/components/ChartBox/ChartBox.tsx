@@ -12,8 +12,11 @@ interface ChartBoxProps {
 
 const ChartBox: FC<ChartBoxProps> = ({ data }) => {
     const svgRef = useRef<SVGSVGElement>(null)
-    const element1Ref = useRef<HTMLDivElement>(null)
-    const element2Ref = useRef<HTMLLIElement>(null)
+    const dif1 = useRef<HTMLDivElement>(null)
+    const dif2 = useRef<HTMLDivElement>(null)
+    const bar1 = useRef<HTMLLIElement>(null)
+    const bar2 = useRef<HTMLLIElement>(null)
+    const bar3 = useRef<HTMLLIElement>(null)
 
     const maxAxisX = 30 // maxAxisX <= 70
     const maxValue = calcMaxY(data)
@@ -21,12 +24,18 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
 
     useEffect(() => {
         const updateArrow = () => {
-            if (element1Ref.current && element2Ref.current && svgRef.current) {
-                createArrow(
-                    element1Ref.current,
-                    element2Ref.current,
-                    svgRef.current
-                )
+            if (!svgRef.current) return
+            const svg = svgRef.current
+
+            while (svg.firstChild) {
+                svg.removeChild(svg.firstChild)
+            }
+
+            if (dif1.current && bar2.current) {
+                createArrow(dif1.current, bar2.current, svg)
+            }
+            if (dif2.current && bar3.current) {
+                createArrow(dif2.current, bar3.current, svg)
             }
         }
 
@@ -38,18 +47,31 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
         }
     }, [])
 
+    const switchRefBar = (index: number) => {
+        switch (index) {
+            case 1:
+                return bar1
+            case 2:
+                return bar2
+            case 3:
+                return bar3
+            default:
+                return null
+        }
+    }
+
     return (
         <div className={style.chartBlock}>
             <div className={style.diffPanel}>
-                <DiffBadge ref={element1Ref} value={-26} />
-                <DiffBadge value={+9} />
+                <DiffBadge ref={dif1} value={-26} />
+                <DiffBadge ref={dif2} value={+9} />
             </div>
             <ul className={style.list}>
                 {Object.entries(data).map(([key, value], i) => {
                     if (key === 'title') return null
                     return (
                         <Bar
-                            ref={i === 2 ? element2Ref : null}
+                            ref={switchRefBar(i)}
                             key={i}
                             data={value}
                             index={index}
@@ -66,6 +88,7 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
                     width: '100%',
                     height: '100%',
                 }}
+                className={style.svg}
             ></svg>
         </div>
     )

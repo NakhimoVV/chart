@@ -1,5 +1,6 @@
 @use '../../styles/variables' as var;
 @import '../../styles/mixins';
+@import '../../styles/media';
 
 .chartBlock {
     padding-block: 20px 30px;
@@ -46,10 +47,19 @@
     grid-template-columns: 80px 60px 80px 60px;
     justify-items: center;
     margin-bottom: 50px;
+
+    @include mobile {
+        grid-template-columns: 60px 20px 60px 20px;
+    }
+
     div:nth-child(1) {
         grid-column: 2/3;
     }
     div:nth-child(2) {
         grid-column: 4/5;
     }
+}
+
+.svg *[stroke] {
+    stroke: var.$color-gray;
 }
