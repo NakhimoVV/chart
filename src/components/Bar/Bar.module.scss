@@ -2,16 +2,16 @@
 @import '../../styles/mixins';
 @import '../../styles/media';
 
-.bar {
+.column {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
     width: rem(80);
     height: 70svh;
-    overflow: hidden;
     background-color: #4ab6e8;
     border-radius: var.$border-radius-large;
+    position: relative;
 
     &:not(:last-child) {
         margin-right: 60px;
@@ -38,4 +38,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &:nth-child(1) {
+        border-radius: 0 0 var.$border-radius-large var.$border-radius-large;
+    }
+    &:nth-child(3) {
+        border-radius: var.$border-radius-large var.$border-radius-large 0 0;
+    }
+}
+.name {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var.$color-gray;
 }

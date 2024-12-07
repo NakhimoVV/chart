@@ -26,7 +26,7 @@ export function createArrow(
             // Промежуточная точка для изгиба
             bendY = fromY + (toY - fromY)
 
-            return `${fromX},${fromY} ${fromX},${bendY} ${toX},${toY}`
+            return `${fromX},${fromY - 10} ${fromX},${bendY} ${toX - 2},${toY}`
         } else if (fromEl.id === 'bar2') {
             fromX = fromRect.right - fromRect.width / 3 - svgRect.left
             fromY = fromRect.top - svgRect.top
@@ -35,7 +35,7 @@ export function createArrow(
 
             bendY = fromY + (toY - fromY)
 
-            return `${fromX},${fromY} ${fromX},${bendY} ${toX},${toY}`
+            return `${fromX},${fromY - 10} ${fromX},${bendY} ${toX - 2},${toY}`
         } else if (toEl.id === 'bar2') {
             fromX = fromRect.right - svgRect.left
             fromY = fromRect.top + fromRect.height / 2 - svgRect.top
@@ -44,7 +44,7 @@ export function createArrow(
 
             bendX = fromX + (toX - fromX)
 
-            return `${fromX},${fromY} ${bendX},${fromY} ${toX},${toY}`
+            return `${fromX + 2},${fromY} ${bendX},${fromY} ${toX},${toY - 10}`
         } else {
             fromX = fromRect.right - svgRect.left
             fromY = fromRect.top + fromRect.height / 2 - svgRect.top
@@ -53,7 +53,7 @@ export function createArrow(
 
             bendX = fromX + (toX - fromX)
 
-            return `${fromX},${fromY} ${bendX},${fromY} ${toX},${toY}`
+            return `${fromX + 2},${fromY} ${bendX},${fromY} ${toX},${toY - 10}`
         }
     }
 

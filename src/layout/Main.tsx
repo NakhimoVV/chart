@@ -1,5 +1,5 @@
-import ButtonMenu from '../components/Button/ButtonMenu'
-import ChartBox from '../components/ChartBox/ChartBox'
+import ButtonMenu from '../components/ButtonMenu/'
+import ChartBox from '../components/ChartBox'
 import data from '../mockData/1.json'
 import style from './Main.module.scss'
 

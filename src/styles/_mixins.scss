@@ -7,3 +7,9 @@
 @function rem($value) {
     @return math.div($value, 16) * 1rem;
 }
+
+@mixin reset-button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}

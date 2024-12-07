@@ -61,17 +61,8 @@ body,
  */
 p {
     // --paragraphMarginBottom: 24px;
-
     margin-block: 0;
 }
-
-/**
-  Внешний отступ вниз для параграфа без атрибута class,
-  который расположен не последним среди своих соседних элементов
- */
-// p:where(:not([class]):not(:last-child)) {
-//   margin-bottom: var(--paragraphMarginBottom);
-// }
 
 /**
   Упрощаем работу с изображениями
@@ -118,16 +109,6 @@ body {
    */
     line-height: 1.5;
 }
-
-/**
-  Приводим к единому цвету svg-элементы
- */
-// svg *[fill] {
-//     fill: currentColor;
-// }
-// svg *[stroke] {
-//     stroke: currentColor;
-// }
 
 /**
   Чиним баг задержки смены цвета при взаимодействии с svg-элементами

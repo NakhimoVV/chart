@@ -1,13 +1,14 @@
 @use '../../styles/variables' as var;
 @use '../../styles/media';
+@use '../../styles/mixins';
 
 .btn {
+    @include mixins.reset-button();
     display: inline-flex;
-    background-color: transparent;
     align-items: center;
     padding: 10px 5px;
-    border: none;
     color: currentColor;
+    font-size: 5px;
 }
 .wrapp {
     position: relative;
@@ -33,6 +34,11 @@
             color: var.$color-light;
             user-select: none;
         }
+    }
+
+    &__button {
+        @include mixins.reset-button();
+        color: currentColor;
     }
 }
 .checked {

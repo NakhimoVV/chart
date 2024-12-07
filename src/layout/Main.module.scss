@@ -3,7 +3,6 @@
 @import '../styles/media';
 
 .content {
-    // background-color: #794343;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,10 +13,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        button {
-            font-size: 5px;
-        }
     }
     &__footer {
         display: inline-flex;

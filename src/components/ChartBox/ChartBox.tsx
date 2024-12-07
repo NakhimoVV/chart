@@ -1,10 +1,10 @@
 import { FC, useEffect, useRef } from 'react'
 import { IData } from '../../types/interfaces'
-import { calcMaxY } from '../../utils/calcMaxY'
-import Bar from '../Bar/Bar'
-import style from './ChartBox.module.scss'
+import Bar from '../Bar'
+import DiffBadge from '../DiffBadge'
 import { createArrow } from '../../utils/createArrow'
-import DiffBadge from '../DiffBadge/DiffBadge'
+import { calcDiff, calcMaxY, sumValueSelf } from '../../utils/calcUtils'
+import style from './ChartBox.module.scss'
 
 interface ChartBoxProps {
     data: IData
@@ -21,6 +21,7 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
     const maxAxisX = 30 // maxAxisX <= 70
     const maxValue = calcMaxY(data)
     const index = +(maxValue / maxAxisX).toFixed(3)
+    const sum = sumValueSelf(data)
 
     useEffect(() => {
         const updateArrow = () => {
@@ -70,8 +71,16 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
     return (
         <div className={style.chartBlock}>
             <div className={style.diffPanel}>
-                <DiffBadge ref={dif1} value={-26} id="dif1" />
-                <DiffBadge ref={dif2} value={+9} id="dif2" />
+                <DiffBadge
+                    ref={dif1}
+                    value={calcDiff(sum[0], sum[1])}
+                    id="dif1"
+                />
+                <DiffBadge
+                    ref={dif2}
+                    value={calcDiff(sum[1], sum[2])}
+                    id="dif2"
+                />
             </div>
             <ul className={style.list}>
                 {Object.entries(data).map(([key, value], i) => {
@@ -83,6 +92,7 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
                             data={value}
                             index={index}
                             id={`bar${i}`}
+                            name={key}
                         />
                     )
                 })}
