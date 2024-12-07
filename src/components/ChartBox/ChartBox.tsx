@@ -31,6 +31,13 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
                 svg.removeChild(svg.firstChild)
             }
 
+            if (bar1.current && dif1.current) {
+                createArrow(bar1.current, dif1.current, svg)
+            }
+            if (bar2.current && dif2.current) {
+                createArrow(bar2.current, dif2.current, svg)
+            }
+
             if (dif1.current && bar2.current) {
                 createArrow(dif1.current, bar2.current, svg)
             }
@@ -63,8 +70,8 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
     return (
         <div className={style.chartBlock}>
             <div className={style.diffPanel}>
-                <DiffBadge ref={dif1} value={-26} />
-                <DiffBadge ref={dif2} value={+9} />
+                <DiffBadge ref={dif1} value={-26} id="dif1" />
+                <DiffBadge ref={dif2} value={+9} id="dif2" />
             </div>
             <ul className={style.list}>
                 {Object.entries(data).map(([key, value], i) => {
@@ -75,6 +82,7 @@ const ChartBox: FC<ChartBoxProps> = ({ data }) => {
                             key={i}
                             data={value}
                             index={index}
+                            id={`bar${i}`}
                         />
                     )
                 })}

@@ -6,9 +6,10 @@ import style from './Bar.module.scss'
 interface BarProps {
     data: IComponent | number
     index: number
+    id: string
 }
 
-const Bar = forwardRef<HTMLLIElement, BarProps>(({ data, index }, ref) => {
+const Bar = forwardRef<HTMLLIElement, BarProps>(({ data, index, id }, ref) => {
     if (isNorm(data)) {
         return (
             <li className={style.bar} style={{ height: data / index + 'svh' }}>
@@ -23,6 +24,7 @@ const Bar = forwardRef<HTMLLIElement, BarProps>(({ data, index }, ref) => {
             ref={ref}
             className={style.bar}
             style={{ height: sum / index + 'svh' }}
+            id={id}
         >
             <div
                 className={style.item + ' db-color'}
