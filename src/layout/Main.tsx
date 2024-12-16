@@ -1,9 +1,11 @@
 import ButtonMenu from '../components/ButtonMenu/'
 import ChartBox from '../components/ChartBox'
-import data from '../mockData/1.json'
+import { useFetchData } from '../hooks/useFetchData'
 import style from './Main.module.scss'
 
 const Main = () => {
+    const { data } = useFetchData()
+
     return (
         <main className={style.content + ' container'}>
             <div className={style.content__header}>

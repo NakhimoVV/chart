@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import style from './Button.module.scss'
-import useFetchData from '../../hooks/useFetchData'
+import { useFetchData } from '../../hooks/useFetchData'
+import { menuItems } from './menuItems'
 
 interface ButtonMenuProp {
     iconType: string
@@ -9,6 +10,7 @@ interface ButtonMenuProp {
 const ButtonMenu = ({ iconType }: ButtonMenuProp) => {
     const [isOpen, setOpen] = useState(false)
     const menuRef = useRef<HTMLDivElement>(null)
+    const { fetchData, activeItemMenu, setActiveItemMenu } = useFetchData()
 
     const handleOpenMenu = () => {
         setOpen(!isOpen)
@@ -19,7 +21,10 @@ const ButtonMenu = ({ iconType }: ButtonMenuProp) => {
         }
     }
 
-    const { fetchData } = useFetchData()
+    const handleMenuItemClick = (index: number, url: string) => {
+        setActiveItemMenu(index)
+        fetchData(url)
+    }
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside)
@@ -42,56 +47,25 @@ const ButtonMenu = ({ iconType }: ButtonMenuProp) => {
             </button>
             {isOpen && (
                 <ul className={style.menuList}>
-                    <li className={style.checked}>
-                        <button
-                            className={style.menuList__button}
-                            onClick={() =>
-                                fetchData('https://rcslabs.ru/ttrp1.json')
+                    {menuItems.map((item, index) => (
+                        <li
+                            key={item.label}
+                            className={
+                                index === activeItemMenu
+                                    ? `${style.active}`
+                                    : ''
                             }
                         >
-                            OS Doors
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className={style.menuList__button}
-                            onClick={() =>
-                                fetchData('https://rcslabs.ru/ttrp2.json')
-                            }
-                        >
-                            OS Bombuntu
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className={style.menuList__button}
-                            onClick={() =>
-                                fetchData('https://rcslabs.ru/ttrp3.json')
-                            }
-                        >
-                            Mibre Office
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className={style.menuList__button}
-                            onClick={() =>
-                                fetchData('https://rcslabs.ru/ttrp4.json')
-                            }
-                        >
-                            LoWtEx
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className={style.menuList__button}
-                            onClick={() =>
-                                fetchData('https://rcslabs.ru/ttrp5.json')
-                            }
-                        >
-                            W$ POS
-                        </button>
-                    </li>
+                            <button
+                                className={style.menuList__button}
+                                onClick={() =>
+                                    handleMenuItemClick(index, item.url)
+                                }
+                            >
+                                {item.label}
+                            </button>
+                        </li>
+                    ))}
                 </ul>
             )}
         </div>

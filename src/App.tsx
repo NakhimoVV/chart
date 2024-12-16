@@ -1,10 +1,13 @@
+import DataProvider from './hooks/useFetchData'
 import Main from './layout/Main'
 
 function App() {
     return (
-        <div className="App">
-            <Main />
-        </div>
+        <DataProvider>
+            <div className="App">
+                <Main />
+            </div>
+        </DataProvider>
     )
 }
 
